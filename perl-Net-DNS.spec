@@ -8,8 +8,8 @@
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl):	Net::DNS - interfejs do resolvera DNS
 Name:		perl-Net-DNS
-Version:	0.33
-Release:	2
+Version:	0.34
+Release:	1
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
@@ -37,7 +37,7 @@ Perla.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-%{__perl} Makefile.PL \
+%{__perl} -MExtUtils::MakeMaker -e 'WriteMakefile(NAME=>"Net::DNS")' \
 	INSTALLDIRS=vendor 
 %{__make}
 
