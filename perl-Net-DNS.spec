@@ -25,11 +25,11 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Net::DNS is a DNS resolver implemented in Perl.  It allows the programmer
-to perform nearly any type of DNS query from a Perl script.
+Net::DNS is a DNS resolver implemented in Perl. It allows the
+programmer to perform nearly any type of DNS query from a Perl script.
 
 %description -l pl
-Net::DNS jest resolverem DNS, zaimplementowanym w Perlu.  Pozwala
+Net::DNS jest resolverem DNS, zaimplementowanym w Perlu. Pozwala
 programi¶cie na wykonanie niemal ka¿dego typu zapytania DNS ze skryptu
 Perla.
 
