@@ -4,7 +4,7 @@
 Summary:	Net::DNS perl module
 Summary(pl):	Modu³ perla Net::DNS
 Name:		perl-Net-DNS
-Version:	0.19
+Version:	0.21
 Release:	1
 License:	GPL
 Group:		Development/Languages/Perl
