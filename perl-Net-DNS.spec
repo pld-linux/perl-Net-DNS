@@ -10,12 +10,12 @@
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl):	Net::DNS - interfejs do resolvera DNS
 Name:		perl-Net-DNS
-Version:	0.42
+Version:	0.45
 Release:	1
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	ceb711a723464b6132fec8ee58a393f0
+# Source0-md5:	038d5ca2ca91560d3c74eb491e14dc1c
 BuildRequires:	perl-devel >= 5.6
 %if %{with tests}
 BuildRequires:	perl-Digest-MD5 >= 2.12
@@ -70,13 +70,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Changes README TODO
 %if %{with libresolv}
-%{perl_vendorarch}/Net/DNS.pm
-%{perl_vendorarch}/Net/DNS
-%{perl_vendorarch}/auto/Net/DNS/DNS.bs
-%attr(755,root,root) %{perl_vendorarch}/auto/Net/DNS/DNS.so
+%{perl_vendorarch}/%{pdir}/%{pnam}.pm
+%{perl_vendorarch}/%{pdir}/%{pnam}
+%{perl_vendorarch}/auto/%{pdir}/%{pnam}/%{pnam}.bs
+%attr(755,root,root) %{perl_vendorarch}/auto/%{pdir}/%{pnam}/%{pnam}.so
 %else
-%{perl_vendorlib}/Net/DNS.pm
-%{perl_vendorlib}/Net/DNS
+%{perl_vendorlib}/%{pdir}/%{pnam}.pm
+%{perl_vendorlib}/%{pdir}/%{pnam}
 %endif
 
 %{_mandir}/man3/*
