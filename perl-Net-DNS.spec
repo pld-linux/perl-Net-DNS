@@ -20,7 +20,7 @@ BuildRequires:	perl-Digest-HMAC >= 1.00
 BuildRequires:	perl-MIME-Base64 >= 2.11
 BuildRequires:	perl-Test-Simple >= 0.18
 %endif
-BuildRequires:	rpm-perlprov >= 3.0.3-16
+BuildRequires:	rpm-perlprov >= 4.0.2-104
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
