@@ -1,9 +1,8 @@
-
+#
 # Conditional build:
-%bcond_without tests 	# do not perform "make test"
-# link against libresolv (creates architecture-dependent package)
-%bcond_with libresolv	
-
+%bcond_with	tests 		# perform "make test"
+%bcond_with	libresolv	# link against libresolv (creates architecture-dependent package)
+#
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	Net
 %define	pnam	DNS
@@ -45,7 +44,7 @@ Perla.
 %build
 %{__perl} Makefile.PL </dev/null \
 	%{?with_libresolv:	--xs} \
-	%{!?_with_libresolv:	--pm} \
+	%{!?with_libresolv:	--no-xs} \
 	INSTALLDIRS=vendor
 
 %{__make} \
