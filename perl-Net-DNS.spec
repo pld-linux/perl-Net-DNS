@@ -4,12 +4,16 @@
 Summary:	Net::DNS perl module
 Summary(pl):	Modu³ perla Net::DNS
 Name:		perl-Net-DNS
-Version:	0.21
+Version:	0.24
 Release:	1
 License:	GPL
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 BuildRequires:	perl >= 5.6
+BuildRequires:	perl-Digest-MD5 >= 2.12
+BuildRequires:	perl-Digest-HMAC >= 1.00
+BuildRequires:	perl-MIME-Base64 >= 2.11
+BuildRequires:	perl-Test-Simple >= 0.18
 BuildRequires:	rpm-perlprov >= 3.0.3-16
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
