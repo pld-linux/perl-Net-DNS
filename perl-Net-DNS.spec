@@ -7,7 +7,7 @@
 %define	pdir	Net
 %define	pnam	DNS
 Summary:	Net::DNS - Perl interface to the DNS resolver
-Summary(pl):	Net::DNS - interfejs do resolvera DNS
+Summary(pl):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
 Version:	0.47
 Release:	1
