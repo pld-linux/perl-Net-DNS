@@ -27,7 +27,7 @@ Net-DNS - interfejs do resolvera DNS.
 
 %build
 perl Makefile.PL
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
