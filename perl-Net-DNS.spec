@@ -4,8 +4,8 @@
 %bcond_with	libresolv	# link against libresolv (creates architecture-dependent package)
 #
 %include	/usr/lib/rpm/macros.perl
-%define	pdir	Net
-%define	pnam	DNS
+%define		pdir	Net
+%define		pnam	DNS
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
