@@ -1,0 +1,15 @@
+diff -urN Net-DNS-0.28.org/lib/Net/DNS/Resolver.pm Net-DNS-0.28/lib/Net/DNS/Resolver.pm
+--- Net-DNS-0.28.org/lib/Net/DNS/Resolver.pm	Fri Sep 13 12:02:07 2002
++++ Net-DNS-0.28/lib/Net/DNS/Resolver.pm	Fri Sep 13 12:02:41 2002
+@@ -812,6 +812,11 @@
+ 		return;
+ 	}
+ 
++	if ($#ns == -1) {
++	    	$self->errorstring('all nameservers unreachable');
++		return;
++	}
++
+ 	my $sel = Net::DNS::Select->new($os, $sock);
+ 
+ 	# Perform each round of retries.
