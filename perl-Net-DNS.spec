@@ -10,7 +10,7 @@ Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
 Version:	0.48
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -61,6 +61,13 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 	DESTDIR=$RPM_BUILD_ROOT
 install demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a contrib $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+# get rid of pod documentation
+%if %{with libresolv}
+rm -f $RPM_BUILD_ROOT%{perl_vendorarch}/Net/DNS/*.pod
+%else
+rm -f $RPM_BUILD_ROOT%{perl_vendorlib}/Net/DNS/*.pod
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
