@@ -8,7 +8,7 @@
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl):	Net::DNS - interfejs do resolvera DNS
 Name:		perl-Net-DNS
-Version:	0.31
+Version:	0.32
 Release:	1
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
