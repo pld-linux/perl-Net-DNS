@@ -4,11 +4,11 @@ Summary(pl):	Modu³ perla Net-DNS
 Name:		perl-Net-DNS
 Version:	0.12
 Release:	3
-Copyright:	GPL
+License:	GPL
 Group:		Development/Languages/Perl
 Group(pl):	Programowanie/Jêzyki/Perl
-Source:		ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/Net-DNS-%{version}.tar.gz
-Patch:		perl-Net-DNS-paths.patch
+Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/Net-DNS-%{version}.tar.gz
+Patch0:		perl-Net-DNS-paths.patch
 BuildRequires:	rpm-perlprov >= 3.0.3-16
 BuildRequires:	perl >= 5.005_03-14
 %requires_eq	perl
@@ -16,7 +16,7 @@ Requires:	%{perl_sitearch}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Net-DNS - Perl interface to the DNS resolver. 
+Net-DNS - Perl interface to the DNS resolver.
 
 %description -l pl
 Net-DNS - interfejs do resolvera DNS.
@@ -31,12 +31,12 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}-%{version}
+install -d $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}-%{version}
 
 make install DESTDIR=$RPM_BUILD_ROOT
 
-install demo/* $RPM_BUILD_ROOT/usr/src/examples/%{name}-%{version}
-cp -a contrib  $RPM_BUILD_ROOT/usr/src/examples/%{name}-%{version}
+install demo/* $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}-%{version}
+cp -a contrib $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}-%{version}
 
 (
   cd $RPM_BUILD_ROOT%{perl_sitearch}/auto/Net/DNS
@@ -60,4 +60,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_mandir}/man3/*
 
-/usr/src/examples/%{name}-%{version}
+%{_prefix}/src/examples/%{name}-%{version}
