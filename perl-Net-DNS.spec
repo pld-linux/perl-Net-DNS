@@ -10,7 +10,7 @@ Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
 Version:	0.47
-Release:	2
+Release:	3
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -46,6 +46,7 @@ Perla.
 %{__perl} Makefile.PL </dev/null \
 	%{?with_libresolv:	--xs} \
 	%{!?with_libresolv:	--no-xs} \
+	--no-online-tests \
 	INSTALLDIRS=vendor
 %{__make} \
 	%{?with_libresolv: OPTIMIZE="%{rpmcflags}"}
@@ -68,13 +69,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Changes README TODO
 %if %{with libresolv}
-%{perl_vendorarch}/%{pdir}/%{pnam}.pm
-%{perl_vendorarch}/%{pdir}/%{pnam}
-%{perl_vendorarch}/auto/%{pdir}/%{pnam}/%{pnam}.bs
-%attr(755,root,root) %{perl_vendorarch}/auto/%{pdir}/%{pnam}/%{pnam}.so
+%{perl_vendorarch}/Net/DNS.pm
+%{perl_vendorarch}/Net/DNS
+%{perl_vendorarch}/auto/Net/DNS/DNS.bs
+%attr(755,root,root) %{perl_vendorarch}/auto/Net/DNS/DNS.so
 %else
-%{perl_vendorlib}/%{pdir}/%{pnam}.pm
-%{perl_vendorlib}/%{pdir}/%{pnam}
+%{perl_vendorlib}/Net/DNS.pm
+%{perl_vendorlib}/Net/DNS
 %endif
 
 %{_mandir}/man3/*
