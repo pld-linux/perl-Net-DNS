@@ -10,12 +10,12 @@
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl):	Net::DNS - interfejs do resolvera DNS
 Name:		perl-Net-DNS
-Version:	0.45
+Version:	0.46
 Release:	1
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	038d5ca2ca91560d3c74eb491e14dc1c
+# Source0-md5:	67bf0842afe5a5e313e5d45d8d2735fb
 BuildRequires:	perl-devel >= 5.6
 %if %{with tests}
 BuildRequires:	perl-Digest-MD5 >= 2.12
