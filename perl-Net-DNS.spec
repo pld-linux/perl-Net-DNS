@@ -1,18 +1,18 @@
 #
 # Conditional build:
 # _without_tests - do not perform "make test"
+#
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	Net
 %define	pnam	DNS
 Summary:	Net::DNS - Perl interface to the DNS resolver.
 Summary(pl):	Net::DNS - interfejs do resolvera DNS.
 Name:		perl-Net-DNS
-Version:	0.28
-Release:	2
+Version:	0.29
+Release:	1
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-Patch0:		%{name}-unreachable_ns.patch
 BuildRequires:	perl >= 5.6
 %if %{?_without_tests:0}%{!?_without_tests:1}
 BuildRequires:	perl-Digest-MD5 >= 2.12
@@ -35,7 +35,6 @@ Perla.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
-%patch0 -p1
 
 %build
 perl Makefile.PL
