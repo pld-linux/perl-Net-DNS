@@ -4,8 +4,8 @@
 Summary:	Net-DNS perl module
 Summary(pl):	Modu³ perla Net-DNS
 Name:		perl-Net-DNS
-Version:	0.12
-Release:	8
+Version:	0.19
+Release:	1
 License:	GPL
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.cpan.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
