@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	tests 		# perform "make test"
+%bcond_without	tests 		# do not perform "make test"
 %bcond_with	libresolv	# link against libresolv (creates architecture-dependent package)
 #
 %include	/usr/lib/rpm/macros.perl
@@ -11,7 +11,8 @@ Summary(pl):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
 Version:	0.47
 Release:	1
-License:	GPL/Artistic
+# same as perl
+License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	749a04eb4377e889ed58d004536a9117
@@ -46,7 +47,6 @@ Perla.
 	%{?with_libresolv:	--xs} \
 	%{!?with_libresolv:	--no-xs} \
 	INSTALLDIRS=vendor
-
 %{__make} \
 	%{?with_libresolv: OPTIMIZE="%{rpmcflags}"}
 
@@ -58,7 +58,6 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
 install demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a contrib $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
