@@ -1,8 +1,8 @@
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	Net
 %define	pnam	DNS
-Summary:	Net-DNS perl module
-Summary(pl):	Modu³ perla Net-DNS
+Summary:	Net::DNS perl module
+Summary(pl):	Modu³ perla Net::DNS
 Name:		perl-Net-DNS
 Version:	0.19
 Release:	1
@@ -15,10 +15,10 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Net-DNS - Perl interface to the DNS resolver.
+Net::DNS - Perl interface to the DNS resolver.
 
 %description -l pl
-Net-DNS - interfejs do resolvera DNS.
+Net::DNS - interfejs do resolvera DNS.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
