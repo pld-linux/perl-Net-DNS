@@ -5,8 +5,8 @@
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	Net
 %define	pnam	DNS
-Summary:	Net::DNS - Perl interface to the DNS resolver.
-Summary(pl):	Net::DNS - interfejs do resolvera DNS.
+Summary:	Net::DNS - Perl interface to the DNS resolver
+Summary(pl):	Net::DNS - interfejs do resolvera DNS
 Name:		perl-Net-DNS
 Version:	0.31
 Release:	1
