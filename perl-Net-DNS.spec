@@ -46,7 +46,7 @@ Perla.
 	%{?!_with_libresolv:	--pm} \
 	INSTALLDIRS=vendor
 
-%{__make}
+%{__make} %{?_with_libresolv: OPTIMIZE="%{rpmcflags}"}
 
 %{!?_without_tests:%{__make} test}
 
