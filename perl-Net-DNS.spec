@@ -1,12 +1,11 @@
+%include	/usr/lib/rpm/macros.perl
 %define	pdir	Net
 %define	pnam	DNS
-%include	/usr/lib/rpm/macros.perl
 Summary:	Net-DNS perl module
 Summary(pl):	Modu³ perla Net-DNS
 Name:		perl-Net-DNS
 Version:	0.12
-Release:	7
-
+Release:	8
 License:	GPL
 Group:		Development/Languages/Perl
 Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
@@ -22,7 +21,7 @@ Net-DNS - Perl interface to the DNS resolver.
 Net-DNS - interfejs do resolvera DNS.
 
 %prep
-%setup -q -n Net-DNS-%{version}
+%setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
 perl Makefile.PL
