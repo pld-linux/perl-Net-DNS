@@ -1,29 +1,31 @@
-#
+
 # Conditional build:
-# _without_tests 	- do not perform "make test"
-# _with_libresolv	- link against libresolv
-#
+%bcond_without tests 	# do not perform "make test"
+# link against libresolv (creates architecture-dependent package)
+%bcond_with libresolv	
+
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	Net
 %define	pnam	DNS
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl):	Net::DNS - interfejs do resolvera DNS
 Name:		perl-Net-DNS
-Version:	0.40
+Version:	0.41
 Release:	1
 License:	GPL/Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	4e5b9e53387638aeb5254b5537942c23
+# Source0-md5:	e766ff5b707f562a05c42a7cd8491852
 BuildRequires:	perl-devel >= 5.6
-%if %{?_without_tests:0}%{!?_without_tests:1}
+%if %{with tests}
 BuildRequires:	perl-Digest-MD5 >= 2.12
 BuildRequires:	perl-Digest-HMAC >= 1.00
 BuildRequires:	perl-MIME-Base64 >= 2.11
 BuildRequires:	perl-Test-Simple >= 0.18
+BuildRequires:	perl-Test-Pod >= 0.95
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
-%if %{?_with_libresolv:0}%{!?_with_libresolv:1}
+%if !%{with libresolv}
 BuildArch:	noarch
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -42,19 +44,21 @@ Perla.
 
 %build
 %{__perl} Makefile.PL </dev/null \
-	%{?_with_libresolv:	--xs} \
-	%{?!_with_libresolv:	--pm} \
+	%{?with_libresolv:	--xs} \
+	%{!?_with_libresolv:	--pm} \
 	INSTALLDIRS=vendor
 
-%{__make} %{?_with_libresolv: OPTIMIZE="%{rpmcflags}"}
+%{__make} \
+	%{?with_libresolv: OPTIMIZE="%{rpmcflags}"}
 
-%{!?_without_tests:%{__make} test}
+%{?with_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a contrib $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
@@ -65,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changes README TODO
-%if 0%{?_with_libresolv:1}
+%if %{with libresolv}
 %{perl_vendorarch}/Net/DNS.pm
 %{perl_vendorarch}/Net/DNS
 %{perl_vendorarch}/auto/Net/DNS/DNS.bs
@@ -74,7 +78,6 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorlib}/Net/DNS.pm
 %{perl_vendorlib}/Net/DNS
 %endif
-
 
 %{_mandir}/man3/*
 %{_examplesdir}/%{name}-%{version}
