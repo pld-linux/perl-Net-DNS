@@ -21,6 +21,7 @@ BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	perl-Digest-MD5 >= 2.12
 BuildRequires:	perl-Digest-HMAC >= 1.00
 BuildRequires:	perl-MIME-Base64 >= 2.11
+BuildRequires:	perl-Net-IP >= 1.20
 BuildRequires:	perl-Test-Simple >= 0.18
 BuildRequires:	perl-Test-Pod >= 0.95
 %endif
