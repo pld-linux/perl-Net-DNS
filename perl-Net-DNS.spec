@@ -24,8 +24,6 @@ BuildRequires:	perl-Digest-MD5 >= 2.12
 BuildRequires:	perl-IO-Socket-INET6 >= 2.51
 BuildRequires:	perl-MIME-Base64 >= 2.11
 BuildRequires:	perl-Net-IP >= 1.20
-BuildRequires:	perl-Test-Pod >= 0.95
-BuildRequires:	perl-Test-Simple >= 0.18
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{without libresolv}
