@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	tests 		# do not perform "make test"
-%bcond_with	libresolv	# link against libresolv (creates architecture-dependent package)
+%bcond_without	libresolv	# link against libresolv (creates architecture-dependent package)
 #
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	Net
@@ -9,24 +9,26 @@
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
-Version:	0.52
-Release:	3
+Version:	0.53
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	035e3ec9156fd73ca8a52308ebc5307c
+# Source0-md5:	404797359373d4df1a025458ab1415f7
 BuildRequires:	perl-devel >= 1:5.8.0
 %if %{with tests}
-BuildRequires:	perl-Digest-MD5 >= 2.12
+BuildRequires:	perl-Digest-BubbleBabble
 BuildRequires:	perl-Digest-HMAC >= 1.00
+BuildRequires:	perl-Digest-MD5 >= 2.12
+BuildRequires:	perl-IO-Socket-INET6 >= 2.51
 BuildRequires:	perl-MIME-Base64 >= 2.11
 BuildRequires:	perl-Net-IP >= 1.20
-BuildRequires:	perl-Test-Simple >= 0.18
 BuildRequires:	perl-Test-Pod >= 0.95
+BuildRequires:	perl-Test-Simple >= 0.18
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
-%if !%{with libresolv}
+%if %{without libresolv}
 BuildArch:	noarch
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -45,8 +47,7 @@ Perla.
 
 %build
 %{__perl} Makefile.PL </dev/null \
-	%{?with_libresolv:	--xs} \
-	%{!?with_libresolv:	--no-xs} \
+	--%{!?with_libresolv:no-}xs \
 	--no-online-tests \
 	INSTALLDIRS=vendor
 %{__make} \
@@ -58,7 +59,7 @@ Perla.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-%{__make} install \
+%{__make} pure_install \
 	DESTDIR=$RPM_BUILD_ROOT
 install demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a contrib $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
