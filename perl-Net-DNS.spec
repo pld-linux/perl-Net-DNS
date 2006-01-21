@@ -62,6 +62,7 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 	DESTDIR=$RPM_BUILD_ROOT
 cp -a demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a contrib $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+perl -pi -e 's#/usr/local/bin/perl#/usr/bin/perl#' $(find $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version} -type f)
 
 # get rid of pod documentation
 %if %{with libresolv}
