@@ -17,6 +17,7 @@ Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	404797359373d4df1a025458ab1415f7
 BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	sed >= 4.0
 %if %{with tests}
 BuildRequires:	perl-Digest-BubbleBabble
 BuildRequires:	perl-Digest-HMAC >= 1.00
@@ -44,6 +45,8 @@ Perla.
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
+%{__sed} -i -e 's#/''usr/local/bin/perl#/''usr/bin/perl#' demo/* contrib/*
+
 %build
 %{__perl} Makefile.PL </dev/null \
 	%{!?with_libresolv:--no-xs} \
@@ -62,7 +65,6 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 	DESTDIR=$RPM_BUILD_ROOT
 cp -a demo/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 cp -a contrib $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
-perl -pi -e 's#/usr/local/bin/perl#/usr/bin/perl#' $(find $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version} -type f)
 
 # get rid of pod documentation
 %if %{with libresolv}
