@@ -31,7 +31,7 @@ BuildRequires:	perl-Net-IP >= 1.20
 BuildRequires:	perl-Test-Pod >= 0.95
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
-%if %{without libresolv}
+%if !%{with libresolv}
 BuildArch:	noarch
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
