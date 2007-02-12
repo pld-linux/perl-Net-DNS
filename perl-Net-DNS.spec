@@ -9,7 +9,7 @@
 %define		pdir	Net
 %define		pnam	DNS
 Summary:	Net::DNS - Perl interface to the DNS resolver
-Summary(pl):	Net::DNS - interfejs perlowy do resolvera DNS
+Summary(pl.UTF-8):   Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
 Version:	0.53
 Release:	3
@@ -40,9 +40,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Net::DNS is a DNS resolver implemented in Perl. It allows the
 programmer to perform nearly any type of DNS query from a Perl script.
 
-%description -l pl
+%description -l pl.UTF-8
 Net::DNS jest resolverem DNS, zaimplementowanym w Perlu. Pozwala
-programi∂cie na wykonanie niemal kaødego typu zapytania DNS ze skryptu
+programi≈õcie na wykonanie niemal ka≈ºdego typu zapytania DNS ze skryptu
 Perla.
 
 %prep
