@@ -1,5 +1,3 @@
-# TODO
-# - pass CC
 #
 # Conditional build:
 %bcond_without	tests 		# do not perform "make test"
@@ -12,7 +10,7 @@ Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl.UTF-8):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
 Version:	0.59
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -56,6 +54,7 @@ Perla.
 	--no-online-tests \
 	INSTALLDIRS=vendor
 %{__make} \
+	CC="%{__cc}" \
 	%{?with_libresolv:OPTIMIZE="%{rpmcflags}"}
 
 %{?with_tests:%{__make} test}
@@ -63,6 +62,7 @@ Perla.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Net/DNS/Resolver
 
 %{__make} pure_install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -82,6 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changes README TODO
+%{perl_vendorlib}/Net/DNS
 %if %{with libresolv}
 %{perl_vendorarch}/Net/DNS.pm
 %{perl_vendorarch}/Net/DNS
@@ -90,7 +91,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{perl_vendorarch}/auto/Net/DNS/DNS.so
 %else
 %{perl_vendorlib}/Net/DNS.pm
-%{perl_vendorlib}/Net/DNS
 %endif
 
 %{_mandir}/man3/*
