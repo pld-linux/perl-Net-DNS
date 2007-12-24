@@ -29,6 +29,8 @@ BuildRequires:	perl-Net-IP >= 1.20
 BuildRequires:	perl-Test-Pod >= 0.95
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
+# https://rt.cpan.org/Public/Bug/Display.html?id=30316:
+BuildRequires:	FIXME(CVE-2007-634)
 %if !%{with libresolv}
 BuildArch:	noarch
 %endif
