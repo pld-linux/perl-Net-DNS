@@ -1,0 +1,20 @@
+--- Net-DNS-0.65.orig/lib/Net/DNS/Resolver/UNIX.pm	2009-01-26 18:31:42.000000000 +0100
++++ Net-DNS-0.65/lib/Net/DNS/Resolver/UNIX.pm	2010-01-03 22:51:12.393805390 +0100
+@@ -21,7 +21,17 @@
+ sub init {
+ 	my ($class) = @_;
+ 	
++	eval {
+ 	$class->read_config_file($resolv_conf) if -f $resolv_conf && -r _; 
++	};
++	if ( $@ ) {
++		if ( $@ =~ /^Could not open / ) {
++			# we ignore this problem
++			#warn "$@";
++		} else {
++			die $@;
++		}
++	}
+ 	
+ 	foreach my $dir (@config_path) {
+ 		my $file = "$dir/$dotfile";
