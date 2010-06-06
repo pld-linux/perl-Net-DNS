@@ -14,7 +14,7 @@ Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
+Source0:	http://search.cpan.org/CPAN/authors/id/O/OL/OLAF/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	1635d876324e3c2f6e277d5778bfe94c
 Patch0:		%{name}-ignore-resolv_conf-open-errors.patch
 URL:		http://search.cpan.org/dist/Net-DNS/
