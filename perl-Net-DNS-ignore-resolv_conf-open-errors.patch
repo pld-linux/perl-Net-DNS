@@ -3,9 +3,9 @@
 @@ -21,7 +21,17 @@
  sub init {
  	my ($class) = @_;
- 	
+ 
 +	eval {
- 	$class->read_config_file($resolv_conf) if -f $resolv_conf && -r _; 
+ 	$class->read_config_file($resolv_conf) if -f $resolv_conf && -r _;
 +	};
 +	if ( $@ ) {
 +		if ( $@ =~ /^Could not open / ) {
@@ -15,6 +15,6 @@
 +			die $@;
 +		}
 +	}
- 	
+ 
  	foreach my $dir (@config_path) {
  		my $file = "$dir/$dotfile";
