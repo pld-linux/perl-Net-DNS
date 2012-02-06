@@ -34,6 +34,9 @@ BuildRequires:	rpm-perlprov >= 4.1-13
 Requires:	perl-Digest-HMAC >= 1.00
 Requires:	perl-Digest-SHA >= 5.23
 Requires:	perl-MIME-Base64 >= 2.11
+# not autodetected
+Provides:	perl(Net::DNS::DomainName1035) = 964
+Provides:	perl(Net::DNS::DomainName2535) = 964
 %if %{without libresolv}
 BuildArch:	noarch
 %endif
