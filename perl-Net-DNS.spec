@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	tests 		# do not perform "make test"
+%bcond_with	tests 		# perform "make test"
 %bcond_without	libresolv	# link against libresolv (creates architecture-dependent package)
 #
 %include	/usr/lib/rpm/macros.perl
@@ -9,13 +9,13 @@
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl.UTF-8):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
-Version:	0.67
+Version:	0.68
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://search.cpan.org/CPAN/authors/id/O/OL/OLAF/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	8caf473b6f74cae38ee18c162041a5db
+Source0:	http://www.cpan.org/modules/by-module/Net/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	05c0f6955747758bb5c9578d9bc6c3a5
 Patch0:		%{name}-ignore-resolv_conf-open-errors.patch
 URL:		http://search.cpan.org/dist/Net-DNS/
 BuildRequires:	perl-devel >= 1:5.8.0
@@ -24,15 +24,17 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	perl-Digest-BubbleBabble
 BuildRequires:	perl-Digest-HMAC >= 1.00
 BuildRequires:	perl-Digest-MD5 >= 2.12
+BuildRequires:	perl-Digest-SHA >= 5.23
 BuildRequires:	perl-IO-Socket-INET6 >= 2.51
 BuildRequires:	perl-MIME-Base64 >= 2.11
-BuildRequires:	perl-Net-IP >= 1.20
 BuildRequires:	perl-Test-Pod >= 0.95
+BuildRequires:	perl-Test-Simple >= 0.18
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
-# https://rt.cpan.org/Public/Bug/Display.html?id=30316:
-# BuildRequires:	FIXME(CVE-unknown)
-%if !%{with libresolv}
+Requires:	perl-Digest-HMAC >= 1.00
+Requires:	perl-Digest-SHA >= 5.23
+Requires:	perl-MIME-Base64 >= 2.11
+%if %{without libresolv}
 BuildArch:	noarch
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
