@@ -95,7 +95,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with libresolv}
 %{perl_vendorarch}/Net/DNS.pm
 %{perl_vendorarch}/Net/DNS
-%{perl_vendorarch}/auto/Net/DNS/DNS.bs
 %dir %{perl_vendorarch}/auto/Net/DNS
 %attr(755,root,root) %{perl_vendorarch}/auto/Net/DNS/DNS.so
 %else
