@@ -22,16 +22,17 @@ BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	sed >= 4.0
 %if %{with tests}
 BuildRequires:	perl-Digest-BubbleBabble
-BuildRequires:	perl-Digest-HMAC >= 1.00
-BuildRequires:	perl-Digest-MD5 >= 2.12
+BuildRequires:	perl-Digest-HMAC >= 1.01
+BuildRequires:	perl-Digest-MD5 >= 2.13
 BuildRequires:	perl-Digest-SHA >= 5.23
 BuildRequires:	perl-IO-Socket-INET6 >= 2.51
 BuildRequires:	perl-MIME-Base64 >= 2.11
 BuildRequires:	perl-Test-Pod >= 0.95
-BuildRequires:	perl-Test-Simple >= 0.18
+BuildRequires:	perl-Test-Simple >= 0.52
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
-Requires:	perl-Digest-HMAC >= 1.00
+Requires:	perl-Digest-HMAC >= 1.01
+Requires:	perl-Digest-MD5 >= 2.13
 Requires:	perl-Digest-SHA >= 5.23
 Requires:	perl-MIME-Base64 >= 2.11
 # not autodetected
