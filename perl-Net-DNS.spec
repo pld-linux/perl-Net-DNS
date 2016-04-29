@@ -40,6 +40,7 @@ Requires:	perl(Time::Local) >= 1.19
 # not autodetected
 Provides:	perl(Net::DNS::DomainName1035) = 1456
 Provides:	perl(Net::DNS::DomainName2535) = 1456
+Conflicts:	perl-Net-DNS-SEC < 1.01
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
