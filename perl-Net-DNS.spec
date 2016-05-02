@@ -1,7 +1,7 @@
 # TODO: verify ignore-resolv_conf-open-errors patch (remove or update)
 #
 # Conditional build:
-%bcond_with	tests 		# perform "make test"
+%bcond_with	tests		# perform "make test"
 #
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	Net
@@ -10,7 +10,7 @@ Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl.UTF-8):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
 Version:	1.05
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -87,7 +87,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Changes README
 %{perl_vendorlib}/Net/DNS.pm
-%dir %{perl_vendorlib}/Net/DNS
 %{perl_vendorlib}/Net/DNS/*.pm
 %{perl_vendorlib}/Net/DNS/RR
 %{perl_vendorlib}/Net/DNS/Resolver
