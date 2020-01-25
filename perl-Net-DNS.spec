@@ -3,7 +3,6 @@
 # Conditional build:
 %bcond_with	tests		# perform "make test"
 #
-%include	/usr/lib/rpm/macros.perl
 %define		pdir	Net
 %define		pnam	DNS
 Summary:	Net::DNS - Perl interface to the DNS resolver
