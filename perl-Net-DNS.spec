@@ -16,19 +16,30 @@ Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Net/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	2a0364cea1ab6c1134506921d909f393
 Patch0:		%{name}-ignore-resolv_conf-open-errors.patch
-URL:		http://search.cpan.org/dist/Net-DNS/
-BuildRequires:	perl-devel >= 1:5.8.0
+URL:		https://metacpan.org/dist/Net-DNS
+BuildRequires:	perl-ExtUtils-MakeMaker >= 6.66
+BuildRequires:	perl-devel >= 1:5.8.8
 BuildRequires:	sed >= 4.0
 %if %{with tests}
+BuildRequires:	perl(Exporter) >= 5.56
+BuildRequires:	perl(File::Spec) >= 0.86
+BuildRequires:	perl(IO::File) >= 1.08
+BuildRequires:	perl(IO::Select) >= 1.14
+BuildRequires:	perl(IO::Socket) >= 1.26
+BuildRequires:	perl(IO::Socket::IP) >= 0.38
+BuildRequires:	perl(PerlIO) >= 1.05
+BuildRequires:	perl(Time::Local) >= 1.19
+BuildRequires:	perl-Carp >= 1.10
 BuildRequires:	perl-Digest-BubbleBabble >= 0.01
 BuildRequires:	perl-Digest-HMAC >= 1.03
 BuildRequires:	perl-Digest-MD5 >= 2.13
 BuildRequires:	perl-Digest-SHA >= 5.23
+BuildRequires:	perl-Encode >= 2.26
 BuildRequires:	perl-IO-Socket-INET6 >= 2.51
-BuildRequires:	perl-MIME-Base64 >= 2.11
+BuildRequires:	perl-MIME-Base64 >= 2.13
+BuildRequires:	perl-Scalar-List-Utils >= 1.25
 BuildRequires:	perl-Test-Pod >= 0.95
 BuildRequires:	perl-Test-Simple >= 0.52
-BuildRequires:	perl(Time::Local) >= 1.19
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.745
@@ -38,9 +49,9 @@ Requires:	perl-Digest-SHA >= 5.23
 Requires:	perl-MIME-Base64 >= 2.11
 Requires:	perl(Time::Local) >= 1.19
 # not autodetected
-Provides:	perl(Net::DNS::DomainName1035) = 1456
-Provides:	perl(Net::DNS::DomainName2535) = 1456
-Conflicts:	perl-Net-DNS-SEC < 1.01
+Provides:	perl(Net::DNS::DomainName1035) = 1813
+Provides:	perl(Net::DNS::DomainName2535) = 1813
+Conflicts:	perl-Net-DNS-SEC < 1.14
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
