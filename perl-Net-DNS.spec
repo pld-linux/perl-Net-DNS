@@ -46,7 +46,7 @@ BuildRequires:	rpmbuild(macros) >= 1.745
 Requires:	perl-Digest-HMAC >= 1.03
 Requires:	perl-Digest-MD5 >= 2.13
 Requires:	perl-Digest-SHA >= 5.23
-Requires:	perl-MIME-Base64 >= 2.11
+Requires:	perl-MIME-Base64 >= 2.13
 Requires:	perl(Time::Local) >= 1.19
 # not autodetected
 Provides:	perl(Net::DNS::DomainName1035) = 1813
