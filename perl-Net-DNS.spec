@@ -31,6 +31,7 @@ BuildRequires:	perl-Test-Simple >= 0.52
 BuildRequires:	perl(Time::Local) >= 1.19
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.745
 Requires:	perl-Digest-HMAC >= 1.03
 Requires:	perl-Digest-MD5 >= 2.13
 Requires:	perl-Digest-SHA >= 5.23
