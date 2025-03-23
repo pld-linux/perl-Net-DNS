@@ -21,36 +21,43 @@ BuildRequires:	perl-ExtUtils-MakeMaker >= 6.66
 BuildRequires:	perl-devel >= 1:5.8.8
 BuildRequires:	sed >= 4.0
 %if %{with tests}
-BuildRequires:	perl(Exporter) >= 5.56
-BuildRequires:	perl(File::Spec) >= 0.86
-BuildRequires:	perl(IO::File) >= 1.08
-BuildRequires:	perl(IO::Select) >= 1.14
-BuildRequires:	perl(IO::Socket) >= 1.26
+BuildRequires:	perl(Exporter) >= 5.63
+BuildRequires:	perl(File::Find) >= 1.13
+BuildRequires:	perl(File::Spec) >= 3.29
+BuildRequires:	perl(IO::File) >= 1.14
+BuildRequires:	perl(IO::Select) >= 1.17
+BuildRequires:	perl(IO::Socket) >= 1.30
 BuildRequires:	perl(IO::Socket::IP) >= 0.38
 BuildRequires:	perl(PerlIO) >= 1.05
+BuildRequires:	perl(Socket) >= 1.81
 BuildRequires:	perl(Time::Local) >= 1.19
+BuildRequires:	perl(base) >= 2.13
+BuildRequires:	perl(constant) >= 1.17
+BuildRequires:	perl(integer) >= 1.00
+BuildRequires:	perl(overload) >= 1.06
+BuildRequires:	perl(strict) >= 1.03
+BuildRequires:	perl(warnings) >= 1.05_01
 BuildRequires:	perl-Carp >= 1.10
-BuildRequires:	perl-Digest-BubbleBabble >= 0.01
+BuildRequires:	perl-Digest-BubbleBabble >= 0.02
 BuildRequires:	perl-Digest-HMAC >= 1.03
-BuildRequires:	perl-Digest-MD5 >= 2.13
+BuildRequires:	perl-Digest-MD5 >= 2.37
 BuildRequires:	perl-Digest-SHA >= 5.23
 BuildRequires:	perl-Encode >= 2.26
 BuildRequires:	perl-IO-Socket-INET6 >= 2.51
-BuildRequires:	perl-MIME-Base64 >= 2.13
+BuildRequires:	perl-MIME-Base64 >= 3.07
 BuildRequires:	perl-Scalar-List-Utils >= 1.25
-BuildRequires:	perl-Test-Pod >= 0.95
-BuildRequires:	perl-Test-Simple >= 0.52
+BuildRequires:	perl-Test-Simple >= 0.80
 %endif
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.745
 Requires:	perl-Digest-HMAC >= 1.03
-Requires:	perl-Digest-MD5 >= 2.13
+Requires:	perl-Digest-MD5 >= 2.37
 Requires:	perl-Digest-SHA >= 5.23
-Requires:	perl-MIME-Base64 >= 2.13
+Requires:	perl-MIME-Base64 >= 3.07
 Requires:	perl(Time::Local) >= 1.19
-# not autodetected
-Provides:	perl(Net::DNS::DomainName1035) = 1813
-Provides:	perl(Net::DNS::DomainName2535) = 1813
+# not autodetected; see lib/Net/DNS/DomainName.pm /VERSION
+Provides:	perl(Net::DNS::DomainName1035) = 2005
+Provides:	perl(Net::DNS::DomainName2535) = 2005
 Conflicts:	perl-Net-DNS-SEC < 1.14
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
