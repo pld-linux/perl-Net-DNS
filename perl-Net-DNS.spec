@@ -1,30 +1,30 @@
-# TODO: verify ignore-resolv_conf-open-errors patch (remove or update)
 #
 # Conditional build:
-%bcond_with	tests		# perform "make test"
+%bcond_with	tests	# test suite
 #
 %define		pdir	Net
 %define		pnam	DNS
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl.UTF-8):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
-Version:	1.50
+Version:	1.53
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/Net/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	1ca152f2eec8f66ef4ae7243697197cc
-Patch0:		%{name}-ignore-resolv_conf-open-errors.patch
+Source0:	https://www.cpan.org/modules/by-module/Net/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	af907c09ce60173408d13b93a0a0ab1e
 URL:		https://metacpan.org/dist/Net-DNS
+BuildRequires:	perl(IO::File) >= 1.14
+BuildRequires:	perl(IO::Socket::IP) >= 0.38
 BuildRequires:	perl-ExtUtils-MakeMaker >= 6.66
-BuildRequires:	perl-devel >= 1:5.8.8
+BuildRequires:	perl-Getopt-Long >= 2.43
+BuildRequires:	perl-devel >= 1:5.8.9
 BuildRequires:	sed >= 4.0
 %if %{with tests}
 BuildRequires:	perl(Exporter) >= 5.63
 BuildRequires:	perl(File::Find) >= 1.13
 BuildRequires:	perl(File::Spec) >= 3.29
-BuildRequires:	perl(IO::File) >= 1.14
 BuildRequires:	perl(IO::Select) >= 1.17
 BuildRequires:	perl(IO::Socket) >= 1.30
 BuildRequires:	perl(IO::Socket::IP) >= 0.38
@@ -43,8 +43,8 @@ BuildRequires:	perl-Digest-HMAC >= 1.03
 BuildRequires:	perl-Digest-MD5 >= 2.37
 BuildRequires:	perl-Digest-SHA >= 5.23
 BuildRequires:	perl-Encode >= 2.26
-BuildRequires:	perl-IO-Socket-INET6 >= 2.51
 BuildRequires:	perl-MIME-Base64 >= 3.07
+BuildRequires:	perl-Net-LibIDN2
 BuildRequires:	perl-Scalar-List-Utils >= 1.25
 BuildRequires:	perl-Test-Simple >= 0.80
 %endif
@@ -73,7 +73,6 @@ Perla.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
-#patch0 -p1
 
 %{__sed} -i -e 's#/''usr/local/bin/perl#/''usr/bin/perl#' demo/* contrib/*
 
