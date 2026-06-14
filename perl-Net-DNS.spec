@@ -12,7 +12,7 @@ Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	https://www.cpan.org/modules/by-module/Net/%{pdir}-%{pnam}-%{version}.tar.gz
+Source0:	https://www.cpan.org/modules/by-module/Net/NLNETLABS/%{pdir}-%{pnam}-%{version}.tar.gz
 # Source0-md5:	0d7c7a34da4514722bb936a803552c57
 URL:		https://metacpan.org/dist/Net-DNS
 BuildRequires:	perl(IO::File) >= 1.14
@@ -44,7 +44,7 @@ BuildRequires:	perl-Digest-MD5 >= 2.37
 BuildRequires:	perl-Digest-SHA >= 5.23
 BuildRequires:	perl-Encode >= 2.26
 BuildRequires:	perl-MIME-Base64 >= 3.07
-BuildRequires:	perl-Net-LibIDN2
+BuildRequires:	perl-Net-LibIDN2 >= 1.00
 BuildRequires:	perl-Scalar-List-Utils >= 1.25
 BuildRequires:	perl-Test-Simple >= 0.80
 %endif
@@ -80,9 +80,12 @@ Perla.
 %{__perl} Makefile.PL </dev/null \
 	--no-online-tests \
 	INSTALLDIRS=vendor
+
 %{__make}
 
-%{?with_tests:%{__make} test}
+%if %{with tests}
+%{__make} test
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
