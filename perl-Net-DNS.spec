@@ -1,19 +1,20 @@
 #
 # Conditional build:
-%bcond_with	tests	# test suite
+%bcond_without	tests	# test suite
 #
 %define		pdir	Net
 %define		pnam	DNS
 Summary:	Net::DNS - Perl interface to the DNS resolver
 Summary(pl.UTF-8):	Net::DNS - interfejs perlowy do resolvera DNS
 Name:		perl-Net-DNS
-Version:	1.55
+Version:	1.56
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	https://www.cpan.org/modules/by-module/Net/NLNETLABS/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	0d7c7a34da4514722bb936a803552c57
+# Source0-md5:	683b3e1d4882d242478e192b2579ae88
+Patch0:		%{name}-uname.patch
 URL:		https://metacpan.org/dist/Net-DNS
 BuildRequires:	perl(IO::File) >= 1.14
 BuildRequires:	perl(IO::Socket::IP) >= 0.38
@@ -73,6 +74,7 @@ Perla.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
+%patch -P0 -p1
 
 %{__sed} -i -e 's#/''usr/local/bin/perl#/''usr/bin/perl#' demo/* contrib/*
 

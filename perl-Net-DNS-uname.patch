@@ -1,0 +1,42 @@
+--- Net-DNS-1.56/lib/Net/DNS/Resolver/UNIX.pm.orig
++++ Net-DNS-1.56/lib/Net/DNS/Resolver/UNIX.pm
+@@ -2,6 +2,7 @@
+ 
+ use strict;
+ use warnings;
++use POSIX ();
+ our $VERSION = (qw$Id: UNIX.pm 2053 2026-07-07 10:18:23Z willem $)[2];
+ 
+ 
+@@ -18,8 +19,8 @@
+ my $dotfile = '.resolv.conf';
+ my @dotfile = grep { -f $_ && -o $_ } map {"$_/$dotfile"} grep {$_} $homedir, '.';
+ 
+-my ($name) = _nosh(qw(uname -n));
+-chomp $name;
++# uname(2) syscall; fork+exec of uname(1) fails where exec is denied (jails, seccomp)
++my $name = ( POSIX::uname() )[1];
+ my ( undef, @domain ) = split /\./, $name, 2;
+ 
+ 
+@@ -37,20 +38,6 @@
+ 	return;
+ }
+ 
+-sub _nosh {				## shell-free backtick emulation
+-	my ( $prog, @arg ) = @_;
+-	if ( open( my $pipe, '-|' ) ) {
+-		my @retval = ( <$pipe>, '' );
+-		close $pipe;
+-		return @retval;
+-	} else {
+-		local $SIG{__WARN__} = sub { };
+-		warn 'child process fails without warning';
+-		eval { exec $prog, @arg };
+-		exit;			## uncoverable statement
+-	}
+-}
+-
+ 1;
+ __END__
+ 
